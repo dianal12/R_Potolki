@@ -111,7 +111,7 @@ export function Footer() {
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="text-gray-400 text-center md:text-left">
               <p>&copy; 2024 R_Potolki. Все права защищены.</p>
-              <p className="text-sm mt-1">ИП Иванов И.И. | ОГРНИП 123456789012345</p>
+              <p className="text-sm mt-1">ИП Гилажетдинов Р.А. | ОГРНИП 0000000000000</p>
             </div>
             <div className="flex items-center gap-6">
               <Link 
@@ -121,7 +121,7 @@ export function Footer() {
                 Админ-панель
               </Link>
               <div className="text-sm text-gray-500">
-                Сайт разработан с ❤️
+                Сайт разработан с сестренкой❤️
               </div>
             </div>
           </div>
