@@ -1,97 +1,293 @@
 import React, { useState } from 'react';
 import { ArrowLeft, ArrowRight, X, MapPin, Calendar, Ruler } from 'lucide-react';
+import photo1 from '../images/photo1.jpg';
+import photo2 from '../images/photo2.jpg';
+import photo3 from '../images/photo3.jpg';
+import photo4 from '../images/photo4.jpg';
+import photo5 from '../images/photo5.jpg';
+import photo6 from '../images/photo6.jpg';
+import photo7 from '../images/photo7.jpg';
+import photo8 from '../images/photo8.jpg';
+import photo9 from '../images/photo9.jpg';
+import photo10 from '../images/photo10.jpg';
+import photo11 from '../images/photo11.jpg';
+import photo12 from '../images/photo12.jpg';
+import photo13 from '../images/photo13.jpg';
+import photo14 from '../images/photo14.jpg';
+import photo15 from '../images/photo15.jpg';
+import photo16 from '../images/photo16.jpg';
+import photo17 from '../images/photo17.jpg';
+import photo18 from '../images/photo18.jpg';
+import photo19 from '../images/photo19.jpg';
+import photo20 from '../images/photo20.jpg';
+import photo21 from '../images/photo21.jpg';
+import photo22 from '../images/photo22.jpg';
 
 const portfolioItems = [
   {
     id: 1,
-    title: 'Современная квартира в ЖК "Премиум"',
-    location: 'Москва, Центральный район',
-    area: '120 м²',
-    date: '2024',
+    title: '000',
+    area: '000 м²',
+    date: '0000',
     category: 'Квартиры',
     images: [
-      'https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=800',
-      'https://images.pexels.com/photos/1571468/pexels-photo-1571468.jpeg?auto=compress&cs=tinysrgb&w=800',
-      'https://images.pexels.com/photos/1571453/pexels-photo-1571453.jpeg?auto=compress&cs=tinysrgb&w=800'
+      photo1
     ],
-    description: 'Многоуровневые натяжные потолки с интегрированным LED-освещением. Использованы матовые и глянцевые фактуры для создания современного интерьера.',
-    features: ['Многоуровневая конструкция', 'LED-подсветка', 'Матовая и глянцевая фактуры', 'Скрытые карнизы']
+    description: '000',
+    features: ['000']
   },
   {
     id: 2,
-    title: 'Загородный дом в классическом стиле',
-    location: 'Московская область',
-    area: '200 м²',
-    date: '2024',
-    category: 'Дома',
+    title: '000',
+    area: '000 м²',
+    date: '0000',
+    category: 'Квартиры',
     images: [
-      'https://images.pexels.com/photos/1571471/pexels-photo-1571471.jpeg?auto=compress&cs=tinysrgb&w=800',
-      'https://images.pexels.com/photos/1571472/pexels-photo-1571472.jpeg?auto=compress&cs=tinysrgb&w=800',
-      'https://images.pexels.com/photos/1571475/pexels-photo-1571475.jpeg?auto=compress&cs=tinysrgb&w=800'
+      photo2
     ],
-    description: 'Элегантные натяжные потолки в классическом стиле с декоративными элементами и люстрами. Создана атмосфера роскоши и комфорта.',
-    features: ['Классический дизайн', 'Декоративные элементы', 'Крепления для люстр', 'Тканевые потолки']
+    description: '000',
+    features: ['000']
   },
   {
     id: 3,
-    title: 'Офисное пространство "Бизнес-центр"',
-    location: 'Москва, Деловой центр',
-    area: '300 м²',
-    date: '2023',
-    category: 'Офисы',
+    title: '000',
+    area: '000 м²',
+    date: '0000',
+    category: 'Квартиры',
     images: [
-      'https://images.pexels.com/photos/1571477/pexels-photo-1571477.jpeg?auto=compress&cs=tinysrgb&w=800',
-      'https://images.pexels.com/photos/1571479/pexels-photo-1571479.jpeg?auto=compress&cs=tinysrgb&w=800',
-      'https://images.pexels.com/photos/1571480/pexels-photo-1571480.jpeg?auto=compress&cs=tinysrgb&w=800'
+      photo3
     ],
-    description: 'Функциональные натяжные потолки для офисного пространства с интегрированной системой освещения и вентиляции.',
-    features: ['Офисное освещение', 'Вентиляционные решетки', 'Акустические свойства', 'Быстрый монтаж']
+    description: '000',
+    features: ['000']
   },
   {
     id: 4,
-    title: 'Детская комната "Звездное небо"',
-    location: 'Москва',
-    area: '25 м²',
-    date: '2024',
-    category: 'Детские',
+    title: '000',
+    area: '000 м²',
+    date: '0000',
+    category: 'Квартиры',
     images: [
-      'https://images.pexels.com/photos/1571481/pexels-photo-1571481.jpeg?auto=compress&cs=tinysrgb&w=800',
-      'https://images.pexels.com/photos/1571482/pexels-photo-1571482.jpeg?auto=compress&cs=tinysrgb&w=800',
-      'https://images.pexels.com/photos/1571483/pexels-photo-1571483.jpeg?auto=compress&cs=tinysrgb&w=800'
+      photo4
     ],
-    description: 'Уникальный потолок "Звездное небо" с оптоволоконной подсветкой. Создает волшебную атмосферу для детской комнаты.',
-    features: ['Эффект "Звездное небо"', 'Оптоволоконная подсветка', 'Безопасные материалы', 'Цветная подсветка']
+    description: '000',
+    features: ['000']
   },
   {
     id: 5,
-    title: 'Ресторан "Премиум класса"',
-    location: 'Москва, Центр',
-    area: '150 м²',
-    date: '2023',
-    category: 'Рестораны',
+    title: '000',
+    area: '000 м²',
+    date: '0000',
+    category: 'Квартиры',
     images: [
-      'https://images.pexels.com/photos/1571484/pexels-photo-1571484.jpeg?auto=compress&cs=tinysrgb&w=800',
-      'https://images.pexels.com/photos/1571485/pexels-photo-1571485.jpeg?auto=compress&cs=tinysrgb&w=800',
-      'https://images.pexels.com/photos/1571486/pexels-photo-1571486.jpeg?auto=compress&cs=tinysrgb&w=800'
+      photo5
     ],
-    description: 'Дизайнерские натяжные потолки для ресторана премиум-класса с художественной подсветкой и акустическими решениями.',
-    features: ['Дизайнерское решение', 'Художественная подсветка', 'Акустический комфорт', 'Влагостойкость']
+    description: '000',
+    features: ['000']
   },
   {
     id: 6,
-    title: 'Спальня в стиле минимализм',
-    location: 'Москва',
-    area: '30 м²',
-    date: '2024',
-    category: 'Спальни',
+    title: '000',
+    area: '000 м²',
+    date: '0000',
+    category: 'Квартиры',
     images: [
-      'https://images.pexels.com/photos/1571487/pexels-photo-1571487.jpeg?auto=compress&cs=tinysrgb&w=800',
-      'https://images.pexels.com/photos/1571488/pexels-photo-1571488.jpeg?auto=compress&cs=tinysrgb&w=800',
-      'https://images.pexels.com/photos/1571489/pexels-photo-1571489.jpeg?auto=compress&cs=tinysrgb&w=800'
+      photo6
     ],
-    description: 'Минималистичный дизайн натяжного потолка с мягким рассеянным освещением для создания уютной атмосферы.',
-    features: ['Минималистичный дизайн', 'Мягкое освещение', 'Матовая фактура', 'Идеальная геометрия']
-  }
+    description: '000',
+    features: ['000']
+  },
+  {
+    id: 7,
+    title: '000',
+    area: '000 м²',
+    date: '0000',
+    category: 'Квартиры',
+    images: [
+      photo7
+    ],
+    description: '000',
+    features: ['000']
+  },
+  {
+    id: 8,
+    title: '000',
+    area: '000 м²',
+    date: '0000',
+    category: 'Квартиры',
+    images: [
+      photo8
+    ],
+    description: '000',
+    features: ['000']
+  },
+  {
+    id: 9,
+    title: '000',
+    area: '000 м²',
+    date: '0000',
+    category: 'Квартиры',
+    images: [
+      photo9
+    ],
+    description: '000',
+    features: ['000']
+  },
+  {
+    id: 10,
+    title: '000',
+    area: '000 м²',
+    date: '0000',
+    category: 'Квартиры',
+    images: [
+      photo10
+    ],
+    description: '000',
+    features: ['000']
+  },
+  {
+    id: 11,
+    title: '000',
+    area: '000 м²',
+    date: '0000',
+    category: 'Квартиры',
+    images: [
+      photo11
+    ],
+    description: '000',
+    features: ['000']
+  },
+  {
+    id: 12,
+    title: '000',
+    area: '000 м²',
+    date: '0000',
+    category: 'Квартиры',
+    images: [
+      photo12
+    ],
+    description: '000',
+    features: ['000']
+  },
+  {
+    id: 13,
+    title: '000',
+    area: '000 м²',
+    date: '0000',
+    category: 'Квартиры',
+    images: [
+      photo13
+    ],
+    description: '000',
+    features: ['000']
+  },
+  {
+    id: 14,
+    title: '000',
+    area: '000 м²',
+    date: '0000',
+    category: 'Квартиры',
+    images: [
+      photo14
+    ],
+    description: '000',
+    features: ['000']
+  },
+  {
+    id: 15,
+    title: '000',
+    area: '000 м²',
+    date: '0000',
+    category: 'Квартиры',
+    images: [
+      photo15
+    ],
+    description: '000',
+    features: ['000']
+  },
+  {
+    id: 16,
+    title: '000',
+    area: '000 м²',
+    date: '0000',
+    category: 'Квартиры',
+    images: [
+      photo16
+    ],
+    description: '000',
+    features: ['000']
+  },
+  {
+    id: 17,
+    title: '000',
+    area: '000 м²',
+    date: '0000',
+    category: 'Квартиры',
+    images: [
+      photo17
+    ],
+    description: '000',
+    features: ['000']
+  },
+  {
+    id: 18,
+    title: '000',
+    area: '000 м²',
+    date: '0000',
+    category: 'Квартиры',
+    images: [
+      photo18
+    ],
+    description: '000',
+    features: ['000']
+  },
+  {
+    id: 19,
+    title: '000',
+    area: '000 м²',
+    date: '0000',
+    category: 'Квартиры',
+    images: [
+      photo19
+    ],
+    description: '000',
+    features: ['000']
+  },
+  {
+    id: 20,
+    title: '000',
+    area: '000 м²',
+    date: '0000',
+    category: 'Квартиры',
+    images: [
+      photo20
+    ],
+    description: '000',
+    features: ['000']
+  },
+  {
+    id: 21,
+    title: '000',
+    area: '000 м²',
+    date: '0000',
+    category: 'Квартиры',
+    images: [
+      photo21
+    ],
+    description: '000',
+    features: ['000']
+  },
+  {
+    id: 22,
+    title: '000',
+    area: '000 м²',
+    date: '0000',
+    category: 'Квартиры',
+    images: [
+      photo22
+    ],
+    description: '000',
+    features: ['000']
+  },
 ];
 
 const categories = ['Все', 'Квартиры', 'Дома', 'Офисы', 'Детские', 'Рестораны', 'Спальни'];
@@ -130,7 +326,7 @@ export function PortfolioPage() {
             Наше портфолио
           </h1>
           <p className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Более 500 успешно реализованных проектов. Каждый потолок — это произведение искусства, 
+            Более 3000 успешно реализованных проектов. Каждый потолок - это произведение искусства, 
             созданное с любовью к деталям и стремлением к совершенству.
           </p>
         </div>
@@ -181,10 +377,6 @@ export function PortfolioPage() {
                     <h3 className="text-lg font-bold mb-2">{item.title}</h3>
                     <div className="flex items-center gap-4 text-sm">
                       <div className="flex items-center gap-1">
-                        <MapPin className="w-4 h-4" />
-                        {item.location}
-                      </div>
-                      <div className="flex items-center gap-1">
                         <Ruler className="w-4 h-4" />
                         {item.area}
                       </div>
@@ -195,10 +387,6 @@ export function PortfolioPage() {
                   <h3 className="text-xl font-bold text-gray-900 mb-2">{item.title}</h3>
                   <p className="text-gray-600 mb-3">{item.description}</p>
                   <div className="flex items-center justify-between text-sm text-gray-500">
-                    <span className="flex items-center gap-1">
-                      <MapPin className="w-4 h-4" />
-                      {item.location}
-                    </span>
                     <span className="flex items-center gap-1">
                       <Calendar className="w-4 h-4" />
                       {item.date}
@@ -278,7 +466,6 @@ export function PortfolioPage() {
                     <div className="grid grid-cols-2 gap-4 mb-6">
                       <div className="flex items-center gap-2 text-gray-600">
                         <MapPin className="w-5 h-5 text-blue-600" />
-                        <span>{selectedProject.location}</span>
                       </div>
                       <div className="flex items-center gap-2 text-gray-600">
                         <Ruler className="w-5 h-5 text-blue-600" />

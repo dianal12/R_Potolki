@@ -1,4 +1,6 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import { 
   ShieldCheck, 
   Wallet, 
@@ -27,6 +29,8 @@ export function HomePage() {
     }
   };
 
+    const navigate = useNavigate();
+
   return (
     <div className="min-h-screen bg-white font-sans pt-20">
       {/* Hero Section */}
@@ -43,7 +47,7 @@ export function HomePage() {
           </h1>
           <p className="text-xl md:text-2xl mb-12 max-w-3xl mx-auto leading-relaxed text-gray-700 font-light">
             Создаем идеальные потолки для вашего дома с гарантией качества и стиля. 
-            Европейские материалы, профессиональная установка, 10 лет гарантии.
+            Европейские материалы, профессиональная установка, 15 лет гарантии.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <button 
@@ -53,7 +57,9 @@ export function HomePage() {
               Бесплатный замер
               <ArrowRight className="w-6 h-6" />
             </button>
-            <button className="border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white px-10 py-5 rounded-2xl text-lg font-semibold transition-all duration-300 hover:shadow-xl">
+            <button
+              onClick={() => navigate('/portfolio')}
+              className="border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white px-10 py-5 rounded-2xl text-lg font-semibold transition-all duration-300 hover:shadow-xl">
               Посмотреть работы
             </button>
           </div>
@@ -65,11 +71,11 @@ export function HomePage() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             <div className="text-center">
-              <div className="text-4xl md:text-5xl font-bold text-blue-600 mb-2">500+</div>
+              <div className="text-4xl md:text-5xl font-bold text-blue-600 mb-2">3000+</div>
               <div className="text-gray-600 font-medium">Довольных клиентов</div>
             </div>
             <div className="text-center">
-              <div className="text-4xl md:text-5xl font-bold text-blue-600 mb-2">10</div>
+              <div className="text-4xl md:text-5xl font-bold text-blue-600 mb-2">15</div>
               <div className="text-gray-600 font-medium">Лет гарантии</div>
             </div>
             <div className="text-center">
@@ -92,9 +98,9 @@ export function HomePage() {
           </h2>
           <p className="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed font-light">
             Мы специализируемся на установке премиальных натяжных потолков для домов и квартир. 
-            Наша команда профессионалов гарантирует высочайшее качество работ и использование только 
-            лучших материалов от европейских производителей. За 8 лет работы мы установили более 
-            500 потолков и заслужили доверие самых требовательных клиентов.
+            Наша команда профессионалов гарантирует высочайшее качество работ и использование только
+            лучших материалов от европейских производителей. За 8 лет работы мы установили более
+            3000 потолков и заслужили доверие самых требовательных клиентов.
           </p>
         </div>
       </section>
@@ -112,7 +118,7 @@ export function HomePage() {
               </div>
               <h3 className="text-2xl font-bold mb-6 text-gray-900">Гарантия качества</h3>
               <p className="text-gray-600 leading-relaxed text-lg">
-                Предоставляем 10-летнюю гарантию на все виды работ и используем только сертифицированные материалы от ведущих европейских производителей
+                Предоставляем 15-летнюю гарантию на все виды работ и используем только сертифицированные материалы от ведущих европейских производителей
               </p>
             </div>
             <div className="bg-gradient-to-br from-green-50 to-emerald-50 p-10 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 hover:scale-105 group border border-green-100">

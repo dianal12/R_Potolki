@@ -1,113 +1,61 @@
 import React, { useState } from 'react';
-import { Star, Quote, ThumbsUp, Calendar, MapPin, User } from 'lucide-react';
+import { Star, Quote, Calendar, MapPin } from 'lucide-react';
 
 const reviews = [
   {
     id: 1,
-    name: 'Анна Козлова',
-    location: 'Москва, ЖК "Премиум"',
-    date: '15 декабря 2024',
+    name: 'Антон',
+    date: '14 мая 2025',
     rating: 5,
-    avatar: 'АК',
-    project: 'Квартира, 3 комнаты',
-    review: 'Превосходное качество работы! Потолки выглядят просто потрясающе. Команда работала быстро и аккуратно, убрали за собой идеально. Особенно понравилось LED-освещение - создает невероятную атмосферу. Рекомендую всем!',
-    images: [
-      'https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=400',
-      'https://images.pexels.com/photos/1571468/pexels-photo-1571468.jpeg?auto=compress&cs=tinysrgb&w=400'
-    ]
+    avatar: 'А',
+    project: 'Монтаж натяжных потолков',
+    review: 'Оперативно списались, провели замеры и договорились об удобном дне. Ребята все сделали быстро и качественно, большое спасибо!'
   },
   {
     id: 2,
-    name: 'Михаил Петров',
-    location: 'Московская область',
-    date: '8 декабря 2024',
+    name: 'Ангелина',
+    date: '8 мая 2025',
     rating: 5,
-    avatar: 'МП',
-    project: 'Частный дом, 200 м²',
-    review: 'Очень довольны результатом! Потолки идеально ровные, освещение встроили именно как хотели. Мастера профессионалы своего дела, работали аккуратно, соблюдали все сроки. Цена полностью соответствует качеству.',
-    images: [
-      'https://images.pexels.com/photos/1571471/pexels-photo-1571471.jpeg?auto=compress&cs=tinysrgb&w=400'
-    ]
+    avatar: 'А',
+    project: 'Монтаж натяжных потолков',
+    review: 'Спасибо огромное Рустаму и его команде за прекрасно выполненную работу! Натягивали потолки в комнате, прихожей и коридоре, предварительно оговорили все нюансы и согласовали смету. В комнате потолки были нестандартные, необходимо было сделать карниз по эркеру с подсветкой. Все сделали в лучшем виде! Однозначно рекомендую Рустама ! Работа выполнена быстро, четко и чисто !'
   },
   {
     id: 3,
-    name: 'Елена Смирнова',
-    location: 'Москва, Центр',
-    date: '1 декабря 2024',
+    name: 'Виктория',
+    date: '12 апреля 2025',
     rating: 5,
-    avatar: 'ЕС',
-    project: 'Офис, 150 м²',
-    review: 'Профессиональная работа на высшем уровне. Сделали все точно в срок, очень аккуратно и качественно. Офис преобразился до неузнаваемости. Сотрудники довольны новым интерьером. Обязательно обратимся еще раз.',
-    images: [
-      'https://images.pexels.com/photos/1571477/pexels-photo-1571477.jpeg?auto=compress&cs=tinysrgb&w=400',
-      'https://images.pexels.com/photos/1571479/pexels-photo-1571479.jpeg?auto=compress&cs=tinysrgb&w=400'
-    ]
+    avatar: 'В',
+    project: 'Монтаж натяжных потолков',
+    review: 'Рустам пришёл с напарником Артуром в назначенный день и время, всё сделали быстро и главное качественно, теперь у меня красивый и стильный потолок в прихожей. Мало кто берётся за маленькую площадь, а мне удобно делать по одной комнате и именно то, что я хочу, так как хочется более современное освещение, а на все комнаты сразу это дорого. Обязательно буду обращаться к Рустаму ещё, так как цены адекватные и работает быстро и качественно. Цена была обозначена сразу и не менялась. Рекомендую!'
   },
   {
     id: 4,
-    name: 'Дмитрий Волков',
-    location: 'Москва, Юго-Запад',
-    date: '25 ноября 2024',
+    name: 'Дмитрий',
+    date: '9 апреля 2025',
     rating: 5,
-    avatar: 'ДВ',
-    project: 'Детская комната',
-    review: 'Сделали потолок "Звездное небо" в детской - ребенок в восторге! Качество материалов отличное, монтаж выполнен безупречно. Мастера объяснили все нюансы ухода. Очень рекомендую для детских комнат.',
-    images: [
-      'https://images.pexels.com/photos/1571481/pexels-photo-1571481.jpeg?auto=compress&cs=tinysrgb&w=400'
-    ]
+    avatar: 'Д',
+    project: 'Монтаж натяжных потолков',
+    review: 'Выражаю благодарность за проделанную работу! Монтаж натяжных потолков выполнен максимально качественно и в кратчайшие сроки! Ребята большие молодцы, учли все пожелания, установили освещение, карнизы для штор и помогли решить вопрос с потолочными решетками вентиляции. Стоимость работ была оговорена заранее и не менялась.'
   },
   {
     id: 5,
-    name: 'Ольга Морозова',
-    location: 'Москва, Север',
-    date: '18 ноября 2024',
+    name: 'Владимир',
+    date: '14 марта 2025',
     rating: 5,
-    avatar: 'ОМ',
-    project: 'Квартира-студия',
-    review: 'Отличная работа! Потолок визуально увеличил пространство студии. Глянцевая поверхность отражает свет и делает комнату светлее. Установка заняла всего один день, никакой грязи и пыли.',
-    images: []
+    avatar: 'В',
+    project: 'Монтаж натяжных потолков',
+    review: 'Рустам приехал с напарником 13 марта, сразу обо всем договорились и с 9 утра 14 приступили к работе. Уже в 17 часов все было сделано и даже убран мусор. Работу свою знают хорошо и делают ее на отлично, и по цене все устроило. Ребята очень трудолюбивые и приятные в общении. Буду советовать их своим близким и знакомым. Очень рад знакомству, большое спасибо и удачи 🤝'
   },
   {
     id: 6,
-    name: 'Александр Новиков',
-    location: 'Подмосковье',
-    date: '10 ноября 2024',
+    name: 'Евгений',
+    date: '5 марта 2025',
     rating: 5,
-    avatar: 'АН',
-    project: 'Загородный дом',
-    review: 'Превосходное качество! Установили потолки во всем доме - результат превзошел ожидания. Особенно впечатлила работа с многоуровневыми конструкциями. Гарантия 10 лет - это показатель уверенности в своей работе.',
-    images: [
-      'https://images.pexels.com/photos/1571472/pexels-photo-1571472.jpeg?auto=compress&cs=tinysrgb&w=400',
-      'https://images.pexels.com/photos/1571475/pexels-photo-1571475.jpeg?auto=compress&cs=tinysrgb&w=400'
-    ]
+    avatar: 'Е',
+    project: 'Монтаж натяжных потолков',
+    review: 'Долго выбирал исполнителя по натяжным потолкам в доме и столкнулся с неадекватностью большинства потолочников, выраженную в завышении цены на материалы в 2-3 раза и безальтернативностью авансовых схем расчетов, которые я как заказчик исключаю сразу. Рустам-единственный адекватный человек, который не выкручивал руки заказчику и выполнил монтаж из моих материалов. За три ударных дня сделано 160 метров потолков Тектум евро с усиленым профилем и с дополнительными работами с установкой светильников с отличным качеством. Рустам с бригадой - тот редкий случай, когда люди не только работают на себя, но и слышат заказчика. Рекомендую Рустама, в том числе, на большие объекты, поскольку работоспособность бригады позволяет решать масштабные задачи.'
   },
-  {
-    id: 7,
-    name: 'Мария Кузнецова',
-    location: 'Москва, Восток',
-    date: '3 ноября 2024',
-    rating: 5,
-    avatar: 'МК',
-    project: 'Спальня',
-    review: 'Потолок в спальне получился идеальным! Матовая фактура создает уютную атмосферу. Мастера работали очень аккуратно, мебель была защищена. Результат полностью соответствует ожиданиям.',
-    images: [
-      'https://images.pexels.com/photos/1571487/pexels-photo-1571487.jpeg?auto=compress&cs=tinysrgb&w=400'
-    ]
-  },
-  {
-    id: 8,
-    name: 'Сергей Белов',
-    location: 'Москва, ЦАО',
-    date: '27 октября 2024',
-    rating: 5,
-    avatar: 'СБ',
-    project: 'Ресторан',
-    review: 'Заказывали потолки для ресторана. Работа выполнена на высочайшем уровне! Дизайнерское решение с подсветкой создало неповторимую атмосферу. Клиенты постоянно делают комплименты интерьеру.',
-    images: [
-      'https://images.pexels.com/photos/1571484/pexels-photo-1571484.jpeg?auto=compress&cs=tinysrgb&w=400',
-      'https://images.pexels.com/photos/1571485/pexels-photo-1571485.jpeg?auto=compress&cs=tinysrgb&w=400'
-    ]
-  }
 ];
 
 const stats = {
@@ -117,7 +65,7 @@ const stats = {
   fourStars: 11,
   threeStars: 2,
   twoStars: 0,
-  oneStars: 0
+  oneStars: 0,
 };
 
 export function ReviewsPage() {
@@ -127,9 +75,7 @@ export function ReviewsPage() {
     return Array.from({ length: 5 }, (_, i) => (
       <Star
         key={i}
-        className={`w-5 h-5 ${
-          i < rating ? 'text-yellow-400 fill-current' : 'text-gray-300'
-        }`}
+        className={`w-5 h-5 ${i < rating ? 'text-yellow-400 fill-current' : 'text-gray-300'}`}
       />
     ));
   };
@@ -139,14 +85,12 @@ export function ReviewsPage() {
       {/* Hero Section */}
       <section className="py-20 bg-gradient-to-br from-blue-50 to-indigo-100">
         <div className="max-w-7xl mx-auto px-6 text-center">
-          <h1 className="text-5xl md:text-7xl font-bold mb-8 text-gray-900">
-            Отзывы клиентов
-          </h1>
+          <h1 className="text-5xl md:text-7xl font-bold mb-8 text-gray-900">Отзывы клиентов</h1>
           <p className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed mb-12">
             Более 500 довольных клиентов доверили нам создание идеальных потолков. 
             Читайте реальные отзывы о нашей работе.
           </p>
-          
+
           {/* Stats */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
             <div className="bg-white rounded-2xl p-6 shadow-lg">
@@ -162,40 +106,9 @@ export function ReviewsPage() {
               <div className="text-gray-600">Рекомендуют</div>
             </div>
             <div className="bg-white rounded-2xl p-6 shadow-lg">
-              <div className="text-3xl font-bold text-blue-600 mb-2">10</div>
+              <div className="text-3xl font-bold text-blue-600 mb-2">15</div>
               <div className="text-gray-600">Лет гарантии</div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Rating Distribution */}
-      <section className="py-16 bg-white">
-        <div className="max-w-4xl mx-auto px-6">
-          <h2 className="text-3xl font-bold text-center mb-12 text-gray-900">
-            Распределение оценок
-          </h2>
-          <div className="space-y-4">
-            {[5, 4, 3, 2, 1].map((stars) => {
-              const count = stats[`${['one', 'two', 'three', 'four', 'five'][stars - 1]}Stars` as keyof typeof stats] as number;
-              const percentage = (count / stats.totalReviews) * 100;
-              
-              return (
-                <div key={stars} className="flex items-center gap-4">
-                  <div className="flex items-center gap-1 w-20">
-                    <span className="text-sm font-medium">{stars}</span>
-                    <Star className="w-4 h-4 text-yellow-400 fill-current" />
-                  </div>
-                  <div className="flex-1 bg-gray-200 rounded-full h-3">
-                    <div
-                      className="bg-gradient-to-r from-blue-500 to-indigo-600 h-3 rounded-full transition-all duration-500"
-                      style={{ width: `${percentage}%` }}
-                    />
-                  </div>
-                  <span className="text-sm text-gray-600 w-12">{count}</span>
-                </div>
-              );
-            })}
           </div>
         </div>
       </section>
@@ -210,7 +123,6 @@ export function ReviewsPage() {
                 className="bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-105 cursor-pointer"
                 onClick={() => setSelectedReview(review)}
               >
-                {/* Header */}
                 <div className="flex items-center gap-4 mb-6">
                   <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full flex items-center justify-center">
                     <span className="text-white font-semibold">{review.avatar}</span>
@@ -220,48 +132,14 @@ export function ReviewsPage() {
                     <p className="text-sm text-gray-600">{review.project}</p>
                   </div>
                 </div>
-
-                {/* Rating */}
-                <div className="flex items-center gap-2 mb-4">
-                  {renderStars(review.rating)}
-                </div>
-
-                {/* Review Text */}
+                <div className="flex items-center gap-2 mb-4">{renderStars(review.rating)}</div>
                 <div className="relative mb-6">
                   <Quote className="absolute -top-2 -left-2 w-8 h-8 text-blue-200" />
                   <p className="text-gray-700 leading-relaxed pl-6">
-                    {review.review.length > 150 
-                      ? `${review.review.substring(0, 150)}...` 
-                      : review.review
-                    }
+                    {review.review.length > 150 ? `${review.review.substring(0, 150)}...` : review.review}
                   </p>
                 </div>
-
-                {/* Images Preview */}
-                {review.images.length > 0 && (
-                  <div className="flex gap-2 mb-4">
-                    {review.images.slice(0, 3).map((image, index) => (
-                      <img
-                        key={index}
-                        src={image}
-                        alt={`Фото от ${review.name}`}
-                        className="w-16 h-16 object-cover rounded-lg"
-                      />
-                    ))}
-                    {review.images.length > 3 && (
-                      <div className="w-16 h-16 bg-gray-200 rounded-lg flex items-center justify-center text-sm text-gray-600">
-                        +{review.images.length - 3}
-                      </div>
-                    )}
-                  </div>
-                )}
-
-                {/* Footer */}
                 <div className="flex items-center justify-between text-sm text-gray-500">
-                  <div className="flex items-center gap-1">
-                    <MapPin className="w-4 h-4" />
-                    {review.location}
-                  </div>
                   <div className="flex items-center gap-1">
                     <Calendar className="w-4 h-4" />
                     {review.date}
@@ -273,27 +151,11 @@ export function ReviewsPage() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-blue-600 to-indigo-600">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-8">
-            Станьте нашим следующим довольным клиентом
-          </h2>
-          <p className="text-xl text-blue-100 mb-8 leading-relaxed">
-            Присоединяйтесь к сотням клиентов, которые уже оценили качество наших потолков
-          </p>
-          <button className="bg-white text-blue-600 hover:bg-gray-100 px-10 py-4 rounded-2xl font-bold text-lg transition-all duration-300 hover:shadow-xl">
-            Заказать бесплатный замер
-          </button>
-        </div>
-      </section>
-
-      {/* Review Modal */}
+      {/* Modal */}
       {selectedReview && (
-        <div className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4">
+        <div className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4">
           <div className="bg-white rounded-3xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
             <div className="p-8">
-              {/* Header */}
               <div className="flex items-center justify-between mb-6">
                 <div className="flex items-center gap-4">
                   <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full flex items-center justify-center">
@@ -314,35 +176,11 @@ export function ReviewsPage() {
                   ×
                 </button>
               </div>
-
-              {/* Review Text */}
               <div className="relative mb-8">
                 <Quote className="absolute -top-4 -left-4 w-12 h-12 text-blue-200" />
-                <p className="text-lg text-gray-700 leading-relaxed pl-8">
-                  {selectedReview.review}
-                </p>
+                <p className="text-lg text-gray-700 leading-relaxed pl-8">{selectedReview.review}</p>
               </div>
-
-              {/* Images */}
-              {selectedReview.images.length > 0 && (
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-                  {selectedReview.images.map((image, index) => (
-                    <img
-                      key={index}
-                      src={image}
-                      alt={`Фото от ${selectedReview.name}`}
-                      className="w-full h-48 object-cover rounded-xl"
-                    />
-                  ))}
-                </div>
-              )}
-
-              {/* Footer */}
               <div className="flex items-center justify-between text-gray-500 pt-6 border-t">
-                <div className="flex items-center gap-2">
-                  <MapPin className="w-5 h-5" />
-                  {selectedReview.location}
-                </div>
                 <div className="flex items-center gap-2">
                   <Calendar className="w-5 h-5" />
                   {selectedReview.date}

@@ -4,6 +4,8 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { useAuth } from '../hooks/useAuth';
 import { Lock, Mail, AlertCircle, Loader } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+
 
 const schema = yup.object({
   email: yup.string().email('Неверный формат email').required('Email обязателен'),
@@ -25,19 +27,23 @@ export function AdminLogin() {
     resolver: yupResolver(schema),
   });
 
+  const navigate = useNavigate();
+
   const onSubmit = async (data: FormData) => {
-    setSubmitStatus('loading');
-    setErrorMessage('');
-    
-    const { error } = await signIn(data.email, data.password);
-    
-    if (error) {
-      setSubmitStatus('error');
-      setErrorMessage(error.message);
-    } else {
-      setSubmitStatus('idle');
-    }
-  };
+  setSubmitStatus('loading');
+  setErrorMessage('');
+
+  const { error } = await signIn(data.email, data.password);
+
+  if (error) {
+    setSubmitStatus('error');
+    setErrorMessage(error.message);
+  } else {
+    setSubmitStatus('idle');
+    navigate('/admin'); // ✅ ПРАВИЛЬНО
+  }
+};
+
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-sky-100 flex items-center justify-center px-6">

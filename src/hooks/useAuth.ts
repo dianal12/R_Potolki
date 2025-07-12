@@ -11,7 +11,7 @@ export function useAuth() {
     // Get initial session
     supabase.auth.getSession().then(({ data: { session } }) => {
       setUser(session?.user ?? null);
-      checkAdminStatus(session?.user);
+      checkAdminStatus(session?.user ?? null);
       setLoading(false);
     });
 
@@ -19,7 +19,7 @@ export function useAuth() {
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
       async (event, session) => {
         setUser(session?.user ?? null);
-        checkAdminStatus(session?.user);
+        checkAdminStatus(session?.user ?? null);
         setLoading(false);
       }
     );
