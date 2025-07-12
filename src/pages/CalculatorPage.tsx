@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { Calculator, Layers, Zap, CheckCircle } from 'lucide-react';
+import { Calculator, Layers, Zap, CheckCircle, Info } from 'lucide-react';
 
 const PRICES = {
   material: {
@@ -46,6 +46,7 @@ interface CalculatorState {
     lamp: number;
     chandelier: number;
   };
+  autoSuggestProfiles: boolean;
 }
 
 export function CalculatorPage() {
@@ -58,6 +59,7 @@ export function CalculatorPage() {
       lamp: 0,
       chandelier: 0,
     },
+    autoSuggestProfiles: true,
   });
 
   const total = useMemo(() => {
@@ -107,7 +109,7 @@ export function CalculatorPage() {
     <div className="min-h-screen bg-white pt-32 pb-12 px-6 max-w-5xl mx-auto">
       <div className="text-center mb-10">
         <h1 className="text-4xl font-bold text-gray-900">Рассчитайте стоимость потолка за 1 минуту</h1>
-        <p className="text-lg text-gray-600 mt-2">Узнайте цену, не выходя из дома - без звонков и менеджеров (конечная стоимость обсуждается лично во время консультации)</p>
+        <p className="text-lg text-gray-600 mt-2">Узнайте цену, не выходя из дома - без звонков и менеджеров. Конечная стоимость обсуждается на консультации.</p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
@@ -120,7 +122,7 @@ export function CalculatorPage() {
                 <button
                   key={option.id}
                   onClick={() => setCalculator((prev) => ({ ...prev, material: option.id }))}
-                  className={`px-6 py-3 rounded-xl border-2 text-sm font-medium transition ${
+                  className={`px-8 py-4 rounded-xl border-2 text-base font-semibold transition ${
                     calculator.material === option.id
                       ? 'border-blue-600 bg-blue-50 text-blue-600'
                       : 'border-gray-200 hover:border-blue-300'
@@ -143,33 +145,63 @@ export function CalculatorPage() {
               onChange={(e) => setCalculator((prev) => ({ ...prev, area: Number(e.target.value) }))}
               className="w-full"
             />
-            <p className="text-sm text-gray-400 mt-1">Укажите примерную площадь помещения</p>
+            <p className="text-sm text-gray-400 mt-1">Минимальная площадь — 10 м²</p>
           </div>
 
           {/* Профили */}
           <div>
-            <h2 className="text-xl font-bold mb-4">Профили</h2>
-            <div className="space-y-4">
-              {profileOptions.map((profile) => (
-                <div key={profile.id} className="flex items-center gap-4">
-                  <input
-                    type="checkbox"
-                    checked={calculator.selectedProfiles.includes(profile.id)}
-                    onChange={() => handleProfileToggle(profile.id)}
-                  />
-                  <label className="flex-1">{profile.label} ({PRICES.profiles[profile.id]} ₽/м.п.)</label>
-                  {calculator.selectedProfiles.includes(profile.id) && (
-                    <input
-                      type="number"
-                      min="0"
-                      value={calculator.profileLengths[profile.id] || ''}
-                      onChange={(e) => handleProfileLengthChange(profile.id, Number(e.target.value))}
-                      className="w-24 px-3 py-2 border-2 border-gray-200 rounded-xl text-right"
-                    />
-                  )}
-                </div>
-              ))}
+            <div className="flex items-center gap-2 mb-4">
+              <h2 className="text-xl font-bold">Профили</h2>
+              <span title="Профили - декоративные элементы по периметру потолка. Вы можете выбрать их вручную или довериться мастеру.">
+                <Info className="w-5 h-5 text-gray-400" />
+              </span>
             </div>
+
+            <label className="flex items-center gap-3 mb-4 text-lg">
+              <input
+                type="checkbox"
+                className="w-5 h-5"
+                checked={calculator.autoSuggestProfiles}
+                onChange={() => setCalculator((prev) => ({
+                  ...prev,
+                  autoSuggestProfiles: !prev.autoSuggestProfiles,
+                  selectedProfiles: [],
+                  profileLengths: {},
+                }))}
+              />
+              <span className="text-gray-700">Не знаю, какой профиль выбрать — порекомендуйте</span>
+            </label>
+
+            {!calculator.autoSuggestProfiles && (
+              <div className="space-y-4">
+                {profileOptions.map((profile) => (
+                  <div key={profile.id} className="flex items-center gap-4">
+                    <input
+                      type="checkbox"
+                      className="w-5 h-5"
+                      checked={calculator.selectedProfiles.includes(profile.id)}
+                      onChange={() => handleProfileToggle(profile.id)}
+                    />
+                    <label className="flex-1 text-base">{profile.label} ({PRICES.profiles[profile.id]} ₽/м.п.)</label>
+                    {calculator.selectedProfiles.includes(profile.id) && (
+                      <input
+                        type="number"
+                        min="0"
+                        value={calculator.profileLengths[profile.id] ?? Math.round(Math.sqrt(calculator.area) * 4)}
+                        onChange={(e) => handleProfileLengthChange(profile.id, Number(e.target.value))}
+                        className="w-24 px-4 py-2 border-2 border-gray-200 rounded-xl text-right text-base"
+                      />
+                    )}
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {calculator.autoSuggestProfiles && (
+              <p className="text-sm text-gray-500 mt-2">
+                Мы автоматически добавим оптимальный профиль в расчёт — мастер уточнит при замере
+              </p>
+            )}
           </div>
 
           {/* Свет */}
@@ -177,7 +209,7 @@ export function CalculatorPage() {
             <h2 className="text-xl font-bold mb-4">Освещение</h2>
             <div className="space-y-3">
               <div className="flex justify-between items-center">
-                <label>Точечные светильники ({PRICES.fixtures.lamp} ₽)</label>
+                <label className="text-base">Точечные светильники ({PRICES.fixtures.lamp} ₽)</label>
                 <input
                   type="number"
                   min="0"
@@ -188,11 +220,11 @@ export function CalculatorPage() {
                       fixtures: { ...prev.fixtures, lamp: Number(e.target.value) },
                     }))
                   }
-                  className="w-24 px-3 py-2 border-2 border-gray-200 rounded-xl text-right"
+                  className="w-24 px-4 py-2 border-2 border-gray-200 rounded-xl text-right text-base"
                 />
               </div>
               <div className="flex justify-between items-center">
-                <label>Люстры ({PRICES.fixtures.chandelier} ₽)</label>
+                <label className="text-base">Люстры ({PRICES.fixtures.chandelier} ₽)</label>
                 <input
                   type="number"
                   min="0"
@@ -203,7 +235,7 @@ export function CalculatorPage() {
                       fixtures: { ...prev.fixtures, chandelier: Number(e.target.value) },
                     }))
                   }
-                  className="w-24 px-3 py-2 border-2 border-gray-200 rounded-xl text-right"
+                  className="w-24 px-4 py-2 border-2 border-gray-200 rounded-xl text-right text-base"
                 />
               </div>
             </div>

@@ -16,7 +16,7 @@ export function Footer() {
               <span className="text-2xl font-bold">R_Potolki</span>
             </div>
             <p className="text-gray-400 leading-relaxed mb-6">
-              Премиальные натяжные потолки для вашего дома. Качество, стиль и надежность с гарантией 10 лет.
+              Премиальные натяжные потолки для вашего дома. Качество, стиль и надежность с гарантией 15 лет.
             </p>
             <div className="flex items-center gap-2 text-yellow-400">
               {[...Array(5)].map((_, i) => (

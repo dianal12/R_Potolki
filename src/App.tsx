@@ -9,10 +9,12 @@ import { ReviewsPage } from './pages/ReviewsPage';
 import { CalculatorPage } from './pages/CalculatorPage';
 import { AdminDashboard } from './components/AdminDashboard';
 import { ProtectedRoute } from './components/ProtectedRoute';
+import { ScrollToTop } from './components/ScrollToTop'; // 👈 добавим импорт
 
 function App() {
   return (
     <Router>
+      <ScrollToTop /> {/* 👈 добавим внутрь Router, над всем */}
       <div className="min-h-screen bg-white">
         <Navbar />
         <Routes>
